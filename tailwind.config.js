@@ -1,11 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
+  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
         sans: ['Geist', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-        serif: ['Instrument Serif', 'Georgia', 'serif'],
       },
       colors: {
         brand: {
@@ -19,6 +19,13 @@ export default {
           700: '#B93D12',
           800: '#96320F',
           900: '#7A2B10',
+          950: '#431205',
+        },
+        lounge: {
+          dark:    '#0A0A0B',
+          card:    '#111113',
+          surface: '#16161A',
+          border:  '#1E1E22',
         },
       },
       animation: {

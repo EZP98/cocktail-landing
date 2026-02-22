@@ -10,4 +10,104 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: #ffffff;
   color: #0f0f0f;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dark body,
+:root.dark body {
+  background: #0A0A0B;
+  color: #f4f4f5;
+}
+
+/* ─── Glow cards (dark mode) ─── */
+.dark .glow-card {
+  background: #111113;
+  border: 1px solid rgba(255, 97, 40, 0.08);
+  box-shadow:
+    0 0 0 1px rgba(255, 97, 40, 0.03),
+    0 4px 24px -4px rgba(0, 0, 0, 0.5);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.dark .glow-card:hover {
+  border-color: rgba(255, 97, 40, 0.18);
+  box-shadow:
+    0 0 30px -8px rgba(255, 97, 40, 0.1),
+    0 4px 24px -4px rgba(0, 0, 0, 0.5);
+}
+
+.dark .glow-card-accent {
+  background: rgba(255, 97, 40, 0.04);
+  border: 1px solid rgba(255, 97, 40, 0.18);
+  box-shadow: 0 0 40px -8px rgba(255, 97, 40, 0.1);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.dark .glow-card-accent:hover {
+  border-color: rgba(255, 97, 40, 0.3);
+  box-shadow: 0 0 50px -8px rgba(255, 97, 40, 0.15);
+}
+
+/* ─── Outlined brand button ─── */
+.btn-outline-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1.5px solid rgba(255, 97, 40, 0.5);
+  color: #FF6128;
+  background: transparent;
+  border-radius: 9999px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.btn-outline-brand:hover {
+  background: rgba(255, 97, 40, 0.08);
+  border-color: #FF6128;
+  box-shadow: 0 0 24px -6px rgba(255, 97, 40, 0.25);
+}
+
+/* ─── Filled brand button with glow ─── */
+.btn-brand-glow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #FF6128;
+  color: white;
+  border-radius: 9999px;
+  border: none;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.btn-brand-glow:hover {
+  box-shadow: 0 0 30px -4px rgba(255, 97, 40, 0.4);
+}
+
+/* ─── Ambient warm glow ─── */
+.ambient-glow {
+  position: relative;
+}
+.ambient-glow::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 600px;
+  background: radial-gradient(ellipse, rgba(255, 97, 40, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Section divider glow ─── */
+.dark .section-glow {
+  background: #0A0A0B;
+  position: relative;
+}
+.dark .section-glow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 97, 40, 0.15) 50%, transparent 100%);
 }
