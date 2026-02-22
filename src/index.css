@@ -8,6 +8,7 @@ body {
   font-family: 'Geist', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   background: #ffffff;
   color: #0f0f0f;
   transition: background-color 0.3s, color 0.3s;
@@ -19,30 +20,16 @@ body {
   color: #f4f4f5;
 }
 
-/* ─── Feature cards (Nexio style) ─── */
-.feature-card {
-  background: #f8f8f8;
-  border: 1px solid #e5e5e5;
-  transition: all 0.3s;
+/* ─── Workflow cards (Visuo style) ─── */
+.workflow-card {
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
-.dark .feature-card {
-  background: #111113;
-  border: 1px solid rgba(255, 255, 255, 0.04);
+.workflow-card:hover {
+  border-color: rgba(0, 0, 0, 0.08);
+}
+.dark .workflow-card:hover {
+  border-color: rgba(255, 255, 255, 0.08);
   box-shadow: 0 4px 40px -8px rgba(0, 0, 0, 0.4);
-}
-
-/* ─── Mockup container glow ─── */
-.dark .mockup-glow {
-  position: relative;
-}
-.dark .mockup-glow::before {
-  content: '';
-  position: absolute;
-  inset: -20px;
-  background: radial-gradient(ellipse at center, rgba(255, 97, 40, 0.06) 0%, transparent 70%);
-  border-radius: 24px;
-  pointer-events: none;
-  z-index: 0;
 }
 
 /* ─── Small cards inside mockups ─── */
@@ -53,23 +40,6 @@ body {
 .dark .mockup-inner {
   background: #16161A;
   border: 1px solid rgba(255, 255, 255, 0.04);
-}
-
-/* ─── Glow cards ─── */
-.dark .glow-card {
-  background: #111113;
-  border: 1px solid rgba(255, 97, 40, 0.06);
-  box-shadow: 0 2px 16px -4px rgba(0, 0, 0, 0.4);
-  transition: border-color 0.3s, box-shadow 0.3s;
-}
-.dark .glow-card:hover {
-  border-color: rgba(255, 97, 40, 0.15);
-  box-shadow: 0 0 24px -8px rgba(255, 97, 40, 0.08), 0 2px 16px -4px rgba(0, 0, 0, 0.4);
-}
-.dark .glow-card-accent {
-  background: rgba(255, 97, 40, 0.03);
-  border: 1px solid rgba(255, 97, 40, 0.15);
-  box-shadow: 0 0 40px -8px rgba(255, 97, 40, 0.08);
 }
 
 /* ─── Buttons ─── */
@@ -90,20 +60,11 @@ body {
 }
 .btn-brand-glow:hover { box-shadow: 0 0 30px -4px rgba(255, 97, 40, 0.4); }
 
-/* ─── Hero glow ─── */
-.hero-glow { position: relative; }
-.dark .hero-glow::after {
-  content: ''; position: absolute; top: 60%; left: 50%;
-  transform: translate(-50%, -50%); width: 600px; height: 400px;
-  background: radial-gradient(ellipse, rgba(255, 97, 40, 0.08) 0%, transparent 70%);
-  pointer-events: none; z-index: 0;
-}
-
 /* ─── Ambient glow ─── */
 .ambient-glow { position: relative; }
-.ambient-glow::before {
+.dark .ambient-glow::before {
   content: ''; position: absolute; top: -200px; left: 50%;
   transform: translateX(-50%); width: 800px; height: 600px;
-  background: radial-gradient(ellipse, rgba(255, 97, 40, 0.05) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(255, 97, 40, 0.04) 0%, transparent 70%);
   pointer-events: none; z-index: 0;
 }

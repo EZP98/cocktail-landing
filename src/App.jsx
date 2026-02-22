@@ -105,340 +105,320 @@ export default function App() {
       <section className="relative overflow-hidden">
         <div className="dark:opacity-15 transition-opacity"><PlasmaBackground /></div>
         <div className="relative z-10 max-w-6xl mx-auto px-6 pt-20 sm:pt-28 pb-6">
-          <div className="max-w-2xl mx-auto text-center mb-16">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium mb-6 bg-gray-100 text-gray-600 dark:bg-white/5 dark:text-gray-400">L'esperto di mixology, sempre con te</span>
-            <h1 className="text-5xl sm:text-6xl lg:text-[4.5rem] font-bold leading-[1.08] tracking-tight mb-5">
-              L'AI che sa<br/>di cocktail.
+          <div className="max-w-3xl mx-auto text-center">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium mb-6 bg-gray-100 text-gray-600 dark:bg-white/5 dark:text-gray-400 border border-gray-200 dark:border-white/[0.06]">L'esperto di mixology, sempre con te</span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight mb-5">
+              Il tuo esperto di cocktail,<br/>potenziato dall'AI
             </h1>
-            <p className="text-base sm:text-lg text-gray-500 dark:text-gray-400 max-w-md mx-auto mb-8 leading-relaxed">
-              15.000 ricette. 3.000 spirits. Fonti professionali.<br className="hidden sm:block"/>Zero risposte generiche.
+            <p className="text-base sm:text-lg text-gray-500 dark:text-gray-400 max-w-lg mx-auto mb-8 leading-relaxed">
+              15.000 ricette verificate, 3.000+ spirits, fonti professionali. Risposte da esperto, non generiche.
             </p>
-            <div className="flex items-center justify-center gap-3">
-              <button className="btn-brand-glow h-11 px-6 text-sm font-medium">Prova gratis <Arrow/></button>
-              <button className="btn-outline-brand h-11 px-6 text-sm font-medium">Scopri di più</button>
-            </div>
+            <button className="btn-brand-glow h-11 px-7 text-sm font-medium">Prova gratis <Arrow/></button>
           </div>
+        </div>
 
-          {/* ─── Hero product mockups (Nexio style: floating cards) ─── */}
-          <div className="hero-glow relative max-w-4xl mx-auto">
-            <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-4">
-              {/* Chat mockup */}
-              <div className="md:col-span-2 mockup-inner rounded-2xl overflow-hidden shadow-2xl">
-                <div className="flex items-center gap-1.5 px-4 py-2.5 border-b border-gray-100 dark:border-white/[0.04]">
-                  <div className="w-2 h-2 rounded-full bg-red-400/70"/><div className="w-2 h-2 rounded-full bg-yellow-400/70"/><div className="w-2 h-2 rounded-full bg-green-400/70"/>
-                  <span className="text-[10px] text-gray-400 dark:text-gray-500 ml-auto">Cocktail AI</span>
+        {/* ─── Hero screenshot (Visuo-style full-width product image) ─── */}
+        <div className="relative z-10 max-w-5xl mx-auto px-6 pt-12 pb-0">
+          <div className="rounded-2xl sm:rounded-3xl overflow-hidden border border-gray-200 dark:border-white/[0.06] shadow-2xl dark:shadow-[0_8px_60px_-12px_rgba(0,0,0,0.6)] bg-white dark:bg-lounge-card">
+            {/* Window chrome */}
+            <div className="flex items-center gap-1.5 px-5 py-3 border-b border-gray-100 dark:border-white/[0.04] bg-gray-50 dark:bg-lounge-surface">
+              <div className="w-2.5 h-2.5 rounded-full bg-red-400/70"/><div className="w-2.5 h-2.5 rounded-full bg-yellow-400/70"/><div className="w-2.5 h-2.5 rounded-full bg-green-400/70"/>
+              <div className="flex-1 flex justify-center">
+                <div className="flex items-center gap-2 px-4 py-1 rounded-md bg-white dark:bg-lounge-dark border border-gray-200 dark:border-white/[0.04] text-[10px] text-gray-400 dark:text-gray-500">
+                  <Logo size={10} className="text-brand-500"/>cocktailai.app
                 </div>
-                <div className="p-4 space-y-3">
-                  <div className="rounded-xl rounded-br-sm px-3 py-2 bg-brand-500/[0.06] border border-brand-200/30 dark:bg-brand-500/8 dark:border-brand-500/10 max-w-[80%] ml-auto">
-                    <p className="text-xs text-brand-900 dark:text-brand-200">5 twist di classici con prodotti della Costiera Amalfitana, no spritz</p>
+              </div>
+            </div>
+            {/* App content */}
+            <div className="grid md:grid-cols-[260px_1fr] min-h-[340px]">
+              {/* Sidebar */}
+              <div className="hidden md:block border-r border-gray-100 dark:border-white/[0.04] p-4 space-y-3">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-6 h-6 rounded-md flex items-center justify-center" style={{background:B}}><Logo size={11} className="text-white"/></div>
+                  <span className="text-xs font-semibold">Cocktail AI</span>
+                </div>
+                {['Nuova conversazione','Negroni sbagliato','Mezcal cocktails','Menu estate 2026'].map((c,i)=>(
+                  <div key={i} className={`px-3 py-2 rounded-lg text-[11px] ${i===0 ? 'bg-brand-500/10 text-brand-500 font-medium' : 'text-gray-400 dark:text-gray-500 hover:bg-gray-50 dark:hover:bg-white/[0.02]'}`}>{c}</div>
+                ))}
+                <div className="pt-3 mt-3 border-t border-gray-100 dark:border-white/[0.04]">
+                  <div className="flex items-center gap-1.5 px-3 py-1.5">
+                    {sources.slice(0,4).map((s,i)=>(
+                      <span key={i} className="text-[8px] text-gray-400 dark:text-gray-600 px-1.5 py-0.5 rounded bg-gray-100 dark:bg-white/[0.03]">{s.split(' ')[0]}</span>
+                    ))}
                   </div>
-                  <div className="space-y-2 max-w-[90%]">
-                    <p className="text-xs font-bold">1. Costa Dorata</p>
-                    <p className="text-[10px] text-gray-400 dark:text-gray-500 uppercase tracking-wider">Twist on: Gin Fizz</p>
-                    <div className="space-y-0.5">
+                </div>
+              </div>
+              {/* Chat area */}
+              <div className="p-5 sm:p-6 flex flex-col">
+                <div className="flex-1 space-y-4">
+                  <div className="rounded-xl rounded-br-sm px-4 py-2.5 bg-brand-500/[0.06] border border-brand-200/30 dark:bg-brand-500/8 dark:border-brand-500/10 max-w-[75%] ml-auto">
+                    <p className="text-[13px] text-brand-900 dark:text-brand-200">5 twist di classici con prodotti della Costiera Amalfitana, no spritz</p>
+                  </div>
+                  <div className="space-y-3 max-w-[85%]">
+                    <p className="text-[13px] font-bold">1. Costa Dorata</p>
+                    <p className="text-[11px] text-gray-400 dark:text-gray-500 uppercase tracking-wider">Twist on: Gin Fizz</p>
+                    <div className="space-y-1">
                       {['50ml Gin mediterraneo','20ml Limoncello di Sfusato','15ml Sciroppo di basilico','3 gocce colatura di alici'].map((r,i)=>
-                        <p key={i} className="text-[11px] text-gray-600 dark:text-gray-400"><span className="text-brand-500">·</span> {r}</p>
+                        <p key={i} className="text-[12px] text-gray-600 dark:text-gray-400"><span className="text-brand-500 mr-1.5">·</span>{r}</p>
                       )}
                     </div>
-                    <p className="text-[10px] text-gray-400 dark:text-gray-500 italic pt-1 border-t border-gray-100 dark:border-white/[0.04]">La colatura di alici dona umami che bilancia il limoncello.</p>
+                    <p className="text-[11px] text-gray-400 dark:text-gray-500 italic pt-2 border-t border-gray-100 dark:border-white/[0.04]">La colatura di alici dona umami che bilancia il limoncello. Servire in coppa, garnish con foglia di basilico.</p>
                   </div>
                 </div>
-                <div className="px-4 py-2 border-t border-gray-100 dark:border-white/[0.04]">
-                  <div className="flex items-center rounded-lg border border-gray-200 dark:border-white/[0.06] px-3 py-1.5">
-                    <span className="text-[11px] text-gray-300 dark:text-gray-600 flex-1">Chiedi qualsiasi cosa...</span>
-                    <button className="h-6 px-2 rounded-md text-white text-[10px] font-medium flex items-center gap-1" style={{background:B}}>Crea <Send/></button>
-                  </div>
-                </div>
-              </div>
-
-              {/* Side stats cards */}
-              <div className="space-y-4">
-                <div className="mockup-inner rounded-2xl p-5 shadow-lg">
-                  <p className="text-3xl font-bold text-brand-500">15.000+</p>
-                  <p className="text-sm font-medium mt-1">Ricette verificate</p>
-                  <p className="text-xs text-gray-400 dark:text-gray-500 mt-0.5">Classici, moderni, signature</p>
-                  <div className="flex items-center gap-1.5 mt-3">
-                    <span className="h-1.5 rounded-full bg-brand-500 flex-[3]"/>
-                    <span className="h-1.5 rounded-full bg-brand-300 dark:bg-brand-700 flex-[2]"/>
-                    <span className="h-1.5 rounded-full bg-brand-200 dark:bg-brand-800 flex-1"/>
-                  </div>
-                </div>
-                <div className="mockup-inner rounded-2xl p-5 shadow-lg">
-                  <p className="text-3xl font-bold text-brand-500">700+</p>
-                  <p className="text-sm font-medium mt-1">Bar nel mondo</p>
-                  <p className="text-xs text-gray-400 dark:text-gray-500 mt-0.5">World's 50 Best e oltre</p>
-                  <div className="flex items-center gap-0.5 mt-3 text-brand-500">
-                    <Star/><Star/><Star/><Star/><Star/>
-                  </div>
-                </div>
-                <div className="mockup-inner rounded-2xl p-5 shadow-lg">
-                  <p className="text-xl font-bold">9 Lingue</p>
-                  <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">Voice chat multilingua</p>
-                  <div className="flex items-center gap-1 mt-3">
-                    {['IT','EN','ES','FR','DE','PT','JA','KO','ZH'].map((l,i)=>
-                      <span key={i} className="w-6 h-6 rounded-md text-[8px] font-bold flex items-center justify-center bg-gray-100 dark:bg-white/5 text-gray-500 dark:text-gray-400">{l}</span>
-                    )}
-                  </div>
+                <div className="mt-4 flex items-center rounded-xl border border-gray-200 dark:border-white/[0.06] px-4 py-2.5 bg-gray-50 dark:bg-lounge-surface">
+                  <span className="text-[12px] text-gray-300 dark:text-gray-600 flex-1">Chiedi qualsiasi cosa...</span>
+                  <button className="h-7 px-3 rounded-lg text-white text-[11px] font-medium flex items-center gap-1.5" style={{background:B}}><Send/></button>
                 </div>
               </div>
             </div>
           </div>
+          {/* Bottom fade gradient */}
+          <div className="h-24 bg-gradient-to-b from-transparent to-white dark:to-lounge-dark -mt-1 relative z-10"/>
         </div>
       </section>
 
-      {/* ═══════════════════ TRUST BAR ═══════════════════ */}
-      <section className="py-10 px-6 border-y border-gray-100 dark:border-white/[0.04]">
-        <div className="max-w-5xl mx-auto">
-          <p className="text-[11px] font-semibold uppercase tracking-wider text-center mb-4 text-gray-400 dark:text-gray-500">Addestrata su</p>
-          <div className="flex flex-wrap gap-2 justify-center">
-            {sources.map((s,i)=><span key={i} className="px-3 py-1.5 rounded-full bg-gray-100 dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.04] text-xs font-medium text-gray-500 dark:text-gray-400">{s}</span>)}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════ FEATURE 1 — AI ESPERTA ═══════════════════ */}
-      <section id="features" className="py-24 px-6">
+      {/* ═══════════════════ WORKFLOW — Feature grid (Visuo-style) ═══════════════════ */}
+      <section id="features" className="py-20 sm:py-28 px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="feature-card rounded-3xl p-8 md:p-12 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-            {/* Text */}
-            <div>
-              <span className="text-xs font-semibold uppercase tracking-wider text-brand-500 mb-3 block">AI Esperta</span>
-              <h2 className="text-3xl sm:text-4xl font-bold leading-tight mb-4">Chiedi qualsiasi cosa<br/>sul mondo del bere.</h2>
-              <p className="text-gray-500 dark:text-gray-400 mb-6 leading-relaxed">Testo, voce o foto di una bottiglia. L'AI risponde con fonti professionali, dati reali, consigli specifici per il tuo livello.</p>
-              <ul className="space-y-2 mb-8">
-                {['Full RAG su 15+ libri professionali','Vision: scatta una foto, l\'AI la riconosce','Voice chat in 9 lingue','Web search in tempo reale'].map((f,i)=>
-                  <li key={i} className="flex items-center gap-2.5 text-sm text-gray-600 dark:text-gray-300"><Check/>{f}</li>
-                )}
-              </ul>
-              <button className="btn-brand-glow h-10 px-5 text-sm font-medium">Prova gratis <Arrow/></button>
-            </div>
-            {/* Mockup */}
-            <div className="mockup-glow relative">
-              <div className="relative z-10 mockup-inner rounded-2xl overflow-hidden shadow-xl">
-                <div className="flex items-center gap-1.5 px-4 py-2.5 border-b border-gray-100 dark:border-white/[0.04]">
-                  <div className="w-2 h-2 rounded-full bg-red-400/70"/><div className="w-2 h-2 rounded-full bg-yellow-400/70"/><div className="w-2 h-2 rounded-full bg-green-400/70"/>
-                  <span className="text-[10px] text-gray-400 dark:text-gray-500 ml-auto">Cocktail AI</span>
-                </div>
-                <div className="p-4 space-y-3">
-                  <div className="rounded-xl rounded-br-sm px-3 py-2 bg-brand-500/[0.06] border border-brand-200/30 dark:bg-brand-500/8 dark:border-brand-500/10 ml-auto max-w-[85%]">
-                    <p className="text-xs text-brand-900 dark:text-brand-200">Il mio Negroni è troppo amaro. Cosa sbaglio?</p>
-                  </div>
-                  <div className="space-y-2">
-                    <p className="text-xs text-gray-700 dark:text-gray-300">Il Negroni amaro dipende da <strong>tre cose</strong>:</p>
-                    {[
-                      {n:'1',t:'Vermouth sbagliato',d:'Usa dolce rosso: Carpano Antica o Cocchi.'},
-                      {n:'2',t:'Gin troppo secco',d:'Prova Hendrick\'s o Roku, meno aggressivi.'},
-                      {n:'3',t:'Proporzioni',d:'1:0.75:1.25 gin-campari-vermouth.'},
-                    ].map((p,i)=>(
-                      <div key={i} className="flex gap-2 items-start bg-gray-50 dark:bg-white/[0.02] rounded-lg p-2.5 border border-transparent dark:border-white/[0.03]">
-                        <span className="w-5 h-5 rounded-md flex items-center justify-center text-white text-[9px] font-bold shrink-0" style={{background:B}}>{p.n}</span>
-                        <div>
-                          <p className="text-[11px] font-semibold">{p.t}</p>
-                          <p className="text-[10px] text-gray-500 dark:text-gray-400">{p.d}</p>
-                        </div>
+          {/* Section header */}
+          <div className="text-center mb-14">
+            <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-medium mb-4 border border-gray-200 dark:border-white/[0.06] text-gray-500 dark:text-gray-400">Come funziona</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">Tutto ciò che serve per<br/>il mondo del bere</h2>
+          </div>
+
+          {/* Workflow grid — 2 cols, 4 cards */}
+          <div className="grid md:grid-cols-2 gap-5">
+
+            {/* Card 1 — AI Chat (image top, text bottom) */}
+            <div className="workflow-card rounded-2xl sm:rounded-3xl overflow-hidden border border-gray-200 dark:border-white/[0.06] bg-gray-50 dark:bg-lounge-card">
+              <div className="relative overflow-hidden h-64 sm:h-72">
+                <div className="absolute inset-0 p-5 sm:p-6">
+                  <div className="mockup-inner rounded-xl overflow-hidden shadow-lg h-full flex flex-col">
+                    <div className="p-4 space-y-3 flex-1">
+                      <div className="rounded-lg rounded-br-sm px-3 py-2 bg-brand-500/[0.06] border border-brand-200/30 dark:bg-brand-500/8 dark:border-brand-500/10 ml-auto max-w-[85%]">
+                        <p className="text-[11px] text-brand-900 dark:text-brand-200">Il mio Negroni è troppo amaro</p>
                       </div>
-                    ))}
-                    <div className="rounded-lg p-2 text-[10px] text-gray-600 dark:text-gray-300 bg-brand-50 border border-brand-200/30 dark:bg-brand-500/5 dark:border-brand-500/10">
-                      <strong>Pro tip:</strong> stira 30s, non shakeare.
+                      <div className="space-y-2">
+                        {[
+                          {n:'1',t:'Vermouth sbagliato',d:'Usa Carpano Antica o Cocchi.'},
+                          {n:'2',t:'Gin troppo secco',d:'Prova Hendrick\'s o Roku.'},
+                          {n:'3',t:'Proporzioni',d:'1:0.75:1.25'},
+                        ].map((p,i)=>(
+                          <div key={i} className="flex gap-2 items-start bg-gray-50 dark:bg-white/[0.02] rounded-lg p-2 border border-transparent dark:border-white/[0.03]">
+                            <span className="w-5 h-5 rounded-md flex items-center justify-center text-white text-[9px] font-bold shrink-0" style={{background:B}}>{p.n}</span>
+                            <div>
+                              <p className="text-[10px] font-semibold">{p.t}</p>
+                              <p className="text-[9px] text-gray-500 dark:text-gray-400">{p.d}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-gray-50 dark:from-lounge-card to-transparent pointer-events-none"/>
+              </div>
+              <div className="px-6 sm:px-8 pb-7 sm:pb-8">
+                <h3 className="text-xl sm:text-2xl font-bold mb-2">Chiedi qualsiasi cosa</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Testo, voce o foto. L'AI risponde con fonti professionali, dati reali e consigli specifici per il tuo livello.</p>
+              </div>
+            </div>
+
+            {/* Card 2 — Encyclopedia (text top, image bottom) */}
+            <div className="workflow-card rounded-2xl sm:rounded-3xl overflow-hidden border border-gray-200 dark:border-white/[0.06] bg-gray-50 dark:bg-lounge-card">
+              <div className="px-6 sm:px-8 pt-7 sm:pt-8 pb-4">
+                <h3 className="text-xl sm:text-2xl font-bold mb-2">15.000+ ricette. Ogni sapore mappato.</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Classici, moderni, signature. Con storia, varianti, note tecniche e profili aromatici.</p>
+              </div>
+              <div className="relative overflow-hidden h-64 sm:h-72">
+                <div className="absolute inset-0 p-5 sm:p-6 pt-2 sm:pt-2">
+                  <div className="space-y-3">
+                    <div className="grid grid-cols-3 gap-2.5">
+                      {[
+                        {name:'Negroni',cat:'Classic',color:'bg-red-500/20 dark:bg-red-500/10'},
+                        {name:'Margarita',cat:'Classic',color:'bg-lime-500/20 dark:bg-lime-500/10'},
+                        {name:'Penicillin',cat:'Modern',color:'bg-amber-500/20 dark:bg-amber-500/10'},
+                        {name:'Paper Plane',cat:'Modern',color:'bg-orange-500/20 dark:bg-orange-500/10'},
+                        {name:'Last Word',cat:'Classic',color:'bg-green-500/20 dark:bg-green-500/10'},
+                        {name:'Jungle Bird',cat:'Tiki',color:'bg-pink-500/20 dark:bg-pink-500/10'},
+                      ].map((c,i)=>(
+                        <div key={i} className="mockup-inner rounded-xl overflow-hidden shadow-md">
+                          <div className={`h-14 ${c.color}`}/>
+                          <div className="p-2">
+                            <p className="text-[10px] font-semibold">{c.name}</p>
+                            <p className="text-[8px] text-gray-400 dark:text-gray-500">{c.cat}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="mockup-inner rounded-xl p-3 shadow-md">
+                      <p className="text-[9px] font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-2">Taste Map</p>
+                      <div className="flex items-center justify-between gap-1.5">
+                        {['Amaro','Dolce','Agrumato','Floreale','Speziato','Affumicato'].map((t,i)=>(
+                          <div key={i} className="flex flex-col items-center gap-1">
+                            <div className="w-7 h-7 rounded-full border-2 border-brand-500/30 flex items-center justify-center" style={{background:`rgba(255,97,40,${0.05+i*0.04})`}}>
+                              <span className="text-[6px] font-bold text-brand-500">{(60+i*8)}%</span>
+                            </div>
+                            <span className="text-[7px] text-gray-400 dark:text-gray-500">{t}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* ═══════════════════ FEATURE 2 — ENCYCLOPEDIA + TASTE MAP ═══════════════════ */}
-      <section className="pb-24 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="feature-card rounded-3xl p-8 md:p-12 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-            {/* Mockup (left side) */}
-            <div className="mockup-glow relative order-2 md:order-1">
-              <div className="relative z-10 space-y-3">
-                {/* Recipe cards grid */}
-                <div className="grid grid-cols-3 gap-3">
+            {/* Card 3 — Bar Guide (text top, list below) */}
+            <div className="workflow-card rounded-2xl sm:rounded-3xl overflow-hidden border border-gray-200 dark:border-white/[0.06] bg-gray-50 dark:bg-lounge-card">
+              <div className="px-6 sm:px-8 pt-7 sm:pt-8 pb-4">
+                <h3 className="text-xl sm:text-2xl font-bold mb-2">700+ bar nel mondo</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">I migliori bar con cosa ordinare. Salva ricette, organizzale, esporta in PDF.</p>
+              </div>
+              <div className="relative overflow-hidden h-64 sm:h-72">
+                <div className="absolute inset-0 px-5 sm:px-6 pt-0 pb-6 space-y-2">
                   {[
-                    {name:'Negroni',cat:'Classic',color:'bg-red-500/20 dark:bg-red-500/10'},
-                    {name:'Margarita',cat:'Classic',color:'bg-lime-500/20 dark:bg-lime-500/10'},
-                    {name:'Penicillin',cat:'Modern',color:'bg-amber-500/20 dark:bg-amber-500/10'},
-                    {name:'Paper Plane',cat:'Modern',color:'bg-orange-500/20 dark:bg-orange-500/10'},
-                    {name:'Last Word',cat:'Classic',color:'bg-green-500/20 dark:bg-green-500/10'},
-                    {name:'Jungle Bird',cat:'Tiki',color:'bg-pink-500/20 dark:bg-pink-500/10'},
-                  ].map((c,i)=>(
-                    <div key={i} className="mockup-inner rounded-xl overflow-hidden shadow-md">
-                      <div className={`h-16 ${c.color}`}/>
-                      <div className="p-2.5">
-                        <p className="text-xs font-semibold">{c.name}</p>
-                        <p className="text-[10px] text-gray-400 dark:text-gray-500">{c.cat}</p>
+                    {name:'Connaught Bar',city:'London',rank:'#1',stars:5},
+                    {name:'Paradiso',city:'Barcelona',rank:'#2',stars:5},
+                    {name:'Tayēr + Elementary',city:'London',rank:'#3',stars:5},
+                    {name:'Licorería Limantour',city:'Mexico City',rank:'#7',stars:4},
+                    {name:'Handshake Speakeasy',city:'Mexico City',rank:'#8',stars:4},
+                  ].map((b,i)=>(
+                    <div key={i} className="mockup-inner rounded-xl px-4 py-2.5 shadow-md flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <span className="w-7 h-7 rounded-lg flex items-center justify-center text-[10px] font-bold bg-brand-500/10 text-brand-500">{b.rank}</span>
+                        <div>
+                          <p className="text-[12px] font-semibold">{b.name}</p>
+                          <p className="text-[10px] text-gray-400 dark:text-gray-500">{b.city}</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-0.5 text-brand-500">
+                        {[...Array(b.stars)].map((_,j)=><Star key={j}/>)}
                       </div>
                     </div>
                   ))}
                 </div>
-                {/* Taste map preview */}
-                <div className="mockup-inner rounded-xl p-4 shadow-md">
-                  <p className="text-[10px] font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-2">Taste Map</p>
-                  <div className="flex items-center justify-between gap-2">
-                    {['Amaro','Dolce','Agrumato','Floreale','Speziato','Affumicato'].map((t,i)=>(
-                      <div key={i} className="flex flex-col items-center gap-1">
-                        <div className="w-8 h-8 rounded-full border-2 border-brand-500/30 flex items-center justify-center" style={{background:`rgba(255,97,40,${0.05+i*0.04})`}}>
-                          <span className="text-[7px] font-bold text-brand-500">{(60+i*8)}%</span>
-                        </div>
-                        <span className="text-[8px] text-gray-400 dark:text-gray-500">{t}</span>
+                <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-gray-50 dark:from-lounge-card to-transparent pointer-events-none"/>
+              </div>
+            </div>
+
+            {/* Card 4 — Business dashboard (image top, text bottom) */}
+            <div id="business" className="workflow-card rounded-2xl sm:rounded-3xl overflow-hidden border border-gray-200 dark:border-white/[0.06] bg-gray-50 dark:bg-lounge-card">
+              <div className="relative overflow-hidden h-64 sm:h-72">
+                <div className="absolute inset-0 p-5 sm:p-6 space-y-3">
+                  <div className="grid grid-cols-3 gap-2.5">
+                    {[{l:'Food Cost',v:'22.4%',c:'#22c55e'},{l:'Labor Cost',v:'31.2%',c:'#eab308'},{l:'Prime Cost',v:'53.6%',c:'#22c55e'}].map((m,i)=>(
+                      <div key={i} className="mockup-inner rounded-xl p-3 text-center shadow-md">
+                        <p className="text-[9px] text-gray-400 dark:text-gray-500">{m.l}</p>
+                        <p className="text-lg font-bold mt-0.5" style={{color:m.c}}>{m.v}</p>
                       </div>
                     ))}
                   </div>
-                </div>
-              </div>
-            </div>
-            {/* Text (right side) */}
-            <div className="order-1 md:order-2">
-              <span className="text-xs font-semibold uppercase tracking-wider text-brand-500 mb-3 block">Encyclopedia & Taste Map</span>
-              <h2 className="text-3xl sm:text-4xl font-bold leading-tight mb-4">15.000+ ricette.<br/>Ogni sapore mappato.</h2>
-              <p className="text-gray-500 dark:text-gray-400 mb-6 leading-relaxed">Classici, moderni, signature dei migliori bar al mondo. Ogni drink con storia, varianti, note tecniche. Esplora connessioni tra ingredienti e profili aromatici.</p>
-              <ul className="space-y-2 mb-8">
-                {['Ricette con storia e varianti','Ricerca per spirit, gusto, metodo','Mappa visuale dei sapori','Suggerimenti basati sui tuoi gusti'].map((f,i)=>
-                  <li key={i} className="flex items-center gap-2.5 text-sm text-gray-600 dark:text-gray-300"><Check/>{f}</li>
-                )}
-              </ul>
-              <button className="btn-outline-brand h-10 px-5 text-sm font-medium">Esplora l'encyclopedia <Arrow/></button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════ FEATURE 3 — BAR GUIDE ═══════════════════ */}
-      <section className="pb-24 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="feature-card rounded-3xl p-8 md:p-12 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-            {/* Text */}
-            <div>
-              <span className="text-xs font-semibold uppercase tracking-wider text-brand-500 mb-3 block">Bar Guide & Recipe Book</span>
-              <h2 className="text-3xl sm:text-4xl font-bold leading-tight mb-4">700+ bar. La tua collezione personale.</h2>
-              <p className="text-gray-500 dark:text-gray-400 mb-6 leading-relaxed">I migliori bar del mondo con cosa ordinare e cosa aspettarsi. Salva le ricette che ami, organizzale, esporta in PDF.</p>
-              <ul className="space-y-2 mb-8">
-                {['World\'s 50 Best Bars','I migliori bar vicino a te','Salva e organizza ricette','Export PDF per il tuo team'].map((f,i)=>
-                  <li key={i} className="flex items-center gap-2.5 text-sm text-gray-600 dark:text-gray-300"><Check/>{f}</li>
-                )}
-              </ul>
-              <button className="btn-outline-brand h-10 px-5 text-sm font-medium">Scopri i bar <Arrow/></button>
-            </div>
-            {/* Mockup */}
-            <div className="mockup-glow relative">
-              <div className="relative z-10 space-y-3">
-                {[
-                  {name:'Connaught Bar',city:'London',rank:'#1',stars:5},
-                  {name:'Paradiso',city:'Barcelona',rank:'#2',stars:5},
-                  {name:'Tayēr + Elementary',city:'London',rank:'#3',stars:5},
-                  {name:'Licorería Limantour',city:'Mexico City',rank:'#7',stars:4},
-                  {name:'Handshake Speakeasy',city:'Mexico City',rank:'#8',stars:4},
-                ].map((b,i)=>(
-                  <div key={i} className="mockup-inner rounded-xl px-4 py-3 shadow-md flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <span className="w-8 h-8 rounded-lg flex items-center justify-center text-[10px] font-bold bg-brand-500/10 text-brand-500">{b.rank}</span>
-                      <div>
-                        <p className="text-sm font-semibold">{b.name}</p>
-                        <p className="text-[11px] text-gray-400 dark:text-gray-500">{b.city}</p>
+                  <div className="mockup-inner rounded-xl p-3 shadow-md">
+                    <p className="text-[9px] font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-1.5">Stock — Alert</p>
+                    {[
+                      {name:'Campari 1L',qty:'2 bottiglie',status:'low'},
+                      {name:'Vermouth Rosso',qty:'1 bottiglia',status:'critical'},
+                      {name:'Gin Hendrick\'s',qty:'4 bottiglie',status:'ok'},
+                    ].map((s,i)=>(
+                      <div key={i} className="flex items-center justify-between py-1 border-b border-gray-100 dark:border-white/[0.03] last:border-0">
+                        <span className="text-[10px]">{s.name}</span>
+                        <div className="flex items-center gap-2">
+                          <span className="text-[9px] text-gray-400 dark:text-gray-500">{s.qty}</span>
+                          <span className={`w-2 h-2 rounded-full ${s.status==='critical'?'bg-red-500':s.status==='low'?'bg-yellow-500':'bg-green-500'}`}/>
+                        </div>
                       </div>
+                    ))}
+                  </div>
+                  <div className="mockup-inner rounded-xl p-3 shadow-md">
+                    <div className="flex items-center justify-between mb-1">
+                      <p className="text-[9px] font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500">Revenue</p>
+                      <span className="text-[10px] font-bold text-green-500">+12%</span>
                     </div>
-                    <div className="flex items-center gap-0.5 text-brand-500">
-                      {[...Array(b.stars)].map((_,j)=><Star key={j}/>)}
+                    <p className="text-lg font-bold">€47.320</p>
+                    <div className="flex items-end gap-0.5 mt-1.5 h-6">
+                      {[40,55,45,70,65,80,75,90,85,95,88,100].map((h,i)=>(
+                        <div key={i} className="flex-1 rounded-sm" style={{height:`${h}%`,background:i>=10?B:`rgba(255,97,40,${0.15+i*0.06})`}}/>
+                      ))}
                     </div>
                   </div>
-                ))}
+                </div>
+                <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-gray-50 dark:from-lounge-card to-transparent pointer-events-none"/>
+              </div>
+              <div className="px-6 sm:px-8 pb-7 sm:pb-8">
+                <h3 className="text-xl sm:text-2xl font-bold mb-2">Il tuo locale, potenziato</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Stock, menu, finanze, team. Un workspace con un'AI addestrata sui tuoi dati.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ═══════════════════ QUERY WALL ═══════════════════ */}
-      <section className="py-24 px-6 bg-gray-50 dark:bg-lounge-card/50">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <span className="text-xs font-semibold uppercase tracking-wider text-brand-500 mb-3 block">Domande reali</span>
-            <h2 className="text-3xl sm:text-4xl font-bold">Questo chiedono i nostri utenti.</h2>
+      {/* Section divider */}
+      <div className="h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-white/[0.06] to-transparent"/>
+
+      {/* ═══════════════════ STATS (Visuo-style) ═══════════════════ */}
+      <section className="py-20 sm:py-28 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-14">
+            <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-medium mb-4 border border-gray-200 dark:border-white/[0.06] text-gray-500 dark:text-gray-400">I numeri</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">Un database che nessun<br/>chatbot può eguagliare</h2>
           </div>
-          <div className="grid sm:grid-cols-2 gap-3">
-            {realQueries.map((q,i)=>(
-              <div key={i} className="glow-card rounded-2xl px-5 py-4 bg-white border border-gray-200 dark:bg-transparent dark:border-transparent transition-all hover:scale-[1.01]">
-                <p className="text-sm leading-relaxed text-gray-700 dark:text-gray-300">"{q}"</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5">
+            {[
+              {n:'15.000+',l:'Ricette verificate',d:'Classici, moderni e signature dei migliori bar al mondo'},
+              {n:'3.000+',l:'Spirits nel database',d:'Ogni bottiglia con note di degustazione e storia'},
+              {n:'700+',l:'Bar nel mondo',d:'World\'s 50 Best Bars e i locali più rilevanti'},
+              {n:'9',l:'Lingue supportate',d:'Voice chat e risposte multilingua in tempo reale'},
+            ].map((s,i)=>(
+              <div key={i} className="relative rounded-2xl sm:rounded-3xl border border-gray-200 dark:border-white/[0.06] bg-gray-50 dark:bg-lounge-card p-6 sm:p-8 overflow-hidden">
+                <div className="absolute -top-6 -right-4 text-[80px] sm:text-[100px] font-black text-gray-100 dark:text-white/[0.03] leading-none select-none pointer-events-none">{s.n.replace('+','')}</div>
+                <div className="relative z-10">
+                  <p className="text-3xl sm:text-4xl font-bold text-brand-500 mb-2">{s.n}</p>
+                  <h3 className="text-base sm:text-lg font-bold mb-1.5">{s.l}</h3>
+                  <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed">{s.d}</p>
+                </div>
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════ BUSINESS ═══════════════════ */}
-      <section id="business" className="py-24 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="feature-card rounded-3xl p-8 md:p-12 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-            {/* Text */}
-            <div>
-              <span className="text-xs font-semibold uppercase tracking-wider text-brand-500 mb-3 block">Business</span>
-              <h2 className="text-3xl sm:text-4xl font-bold leading-tight mb-4">Il tuo locale,<br/>potenziato.</h2>
-              <p className="text-gray-500 dark:text-gray-400 mb-6 leading-relaxed">Stock, menu, finanze, team. Un workspace con un'AI addestrata sui TUOI dati.</p>
-              <div className="grid grid-cols-2 gap-2 mb-8">
-                {['Stock in tempo reale','Menu digitale + QR','Finance dashboard','Lab Diary R&D','Team fino a 10','Integrazione POS'].map((f,i)=>
-                  <div key={i} className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300"><Check/>{f}</div>
-                )}
-              </div>
-              <button className="btn-brand-glow h-10 px-5 text-sm font-medium">Prova Business <Arrow/></button>
-            </div>
-            {/* Dashboard mockup */}
-            <div className="mockup-glow relative">
-              <div className="relative z-10 space-y-3">
-                {/* KPI row */}
-                <div className="grid grid-cols-3 gap-3">
-                  {[{l:'Food Cost',v:'22.4%',c:'#22c55e'},{l:'Labor Cost',v:'31.2%',c:'#eab308'},{l:'Prime Cost',v:'53.6%',c:'#22c55e'}].map((m,i)=>(
-                    <div key={i} className="mockup-inner rounded-xl p-3 text-center shadow-md">
-                      <p className="text-[10px] text-gray-400 dark:text-gray-500">{m.l}</p>
-                      <p className="text-xl font-bold mt-0.5" style={{color:m.c}}>{m.v}</p>
-                    </div>
-                  ))}
-                </div>
-                {/* Stock preview */}
-                <div className="mockup-inner rounded-xl p-4 shadow-md">
-                  <p className="text-[10px] font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-2">Stock — Alert</p>
-                  {[
-                    {name:'Campari 1L',qty:'2 bottiglie',status:'low'},
-                    {name:'Vermouth Rosso',qty:'1 bottiglia',status:'critical'},
-                    {name:'Gin Hendrick\'s',qty:'4 bottiglie',status:'ok'},
-                  ].map((s,i)=>(
-                    <div key={i} className="flex items-center justify-between py-1.5 border-b border-gray-100 dark:border-white/[0.03] last:border-0">
-                      <span className="text-xs">{s.name}</span>
-                      <div className="flex items-center gap-2">
-                        <span className="text-[10px] text-gray-400 dark:text-gray-500">{s.qty}</span>
-                        <span className={`w-2 h-2 rounded-full ${s.status==='critical'?'bg-red-500':s.status==='low'?'bg-yellow-500':'bg-green-500'}`}/>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                {/* Revenue mini */}
-                <div className="mockup-inner rounded-xl p-4 shadow-md">
-                  <div className="flex items-center justify-between mb-2">
-                    <p className="text-[10px] font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500">Revenue — Feb 2026</p>
-                    <span className="text-xs font-bold text-green-500">+12%</span>
-                  </div>
-                  <p className="text-2xl font-bold">€47.320</p>
-                  <div className="flex items-end gap-1 mt-2 h-8">
-                    {[40,55,45,70,65,80,75,90,85,95,88,100].map((h,i)=>(
-                      <div key={i} className="flex-1 rounded-sm" style={{height:`${h}%`,background:i>=10?B:`rgba(255,97,40,${0.15+i*0.06})`}}/>
-                    ))}
-                  </div>
-                </div>
-              </div>
+          {/* Trust sources */}
+          <div className="mt-12 text-center">
+            <p className="text-[11px] font-semibold uppercase tracking-wider mb-4 text-gray-400 dark:text-gray-500">Addestrata su</p>
+            <div className="flex flex-wrap gap-2 justify-center">
+              {sources.map((s,i)=><span key={i} className="px-3 py-1.5 rounded-full bg-gray-100 dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.04] text-xs font-medium text-gray-500 dark:text-gray-400">{s}</span>)}
             </div>
           </div>
         </div>
       </section>
 
+      {/* Section divider */}
+      <div className="h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-white/[0.06] to-transparent"/>
+
+      {/* ═══════════════════ CTA MID (Visuo-style) ═══════════════════ */}
+      <section className="py-20 sm:py-28 px-6 ambient-glow">
+        <div className="max-w-2xl mx-auto text-center relative z-10">
+          <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-medium mb-4 border border-gray-200 dark:border-white/[0.06] text-gray-500 dark:text-gray-400">Domande reali</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-5">Questo chiedono<br/>i nostri utenti</h2>
+          <p className="text-gray-500 dark:text-gray-400 mb-10 leading-relaxed">Non le solite domande. Le stesse che faresti a un bartender esperto, un sommelier o un head barman.</p>
+        </div>
+        <div className="max-w-5xl mx-auto grid sm:grid-cols-2 gap-3 relative z-10">
+          {realQueries.map((q,i)=>(
+            <div key={i} className="rounded-2xl px-5 py-4 bg-gray-50 dark:bg-lounge-card border border-gray-200 dark:border-white/[0.06] transition-all hover:border-brand-500/30 dark:hover:border-brand-500/20">
+              <p className="text-sm leading-relaxed text-gray-700 dark:text-gray-300">"{q}"</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Section divider */}
+      <div className="h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-white/[0.06] to-transparent"/>
+
       {/* ═══════════════════ PRICING ═══════════════════ */}
-      <section id="pricing" className="py-24 px-6 bg-gray-50 dark:bg-lounge-card/50">
+      <section id="pricing" className="py-20 sm:py-28 px-6">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-4">
-            <span className="text-xs font-semibold uppercase tracking-wider mb-3 block text-brand-500">Prezzi</span>
-            <h2 className="text-3xl sm:text-4xl font-bold">Prezzi chiari.</h2>
+            <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-medium mb-4 border border-gray-200 dark:border-white/[0.06] text-gray-500 dark:text-gray-400">Prezzi</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">Prezzi chiari, nessuna sorpresa</h2>
           </div>
           <div className="flex items-center justify-center gap-3 mb-14">
             <span className={`text-sm font-medium transition-colors ${!annual ? 'text-gray-900 dark:text-white' : 'text-gray-400 dark:text-gray-500'}`}>Mensile</span>
@@ -450,9 +430,9 @@ export default function App() {
           </div>
           <div className="grid md:grid-cols-3 gap-4 mb-6">
             {personalPricing.map((p,i)=>(
-              <div key={i} className={`rounded-2xl p-6 border transition-all ${p.highlight
-                ? 'glow-card-accent bg-white dark:bg-transparent border-brand-500/30 dark:border-transparent'
-                : 'glow-card bg-white dark:bg-transparent border-gray-200 dark:border-transparent'}`}>
+              <div key={i} className={`rounded-2xl sm:rounded-3xl p-6 sm:p-7 border transition-all ${p.highlight
+                ? 'bg-gray-50 dark:bg-lounge-card border-brand-500/30 dark:border-brand-500/20 shadow-lg shadow-brand-500/5'
+                : 'bg-gray-50 dark:bg-lounge-card border-gray-200 dark:border-white/[0.06]'}`}>
                 {p.badge&&<span className="inline-block px-2.5 py-1 rounded-full text-white text-[10px] font-medium mb-3" style={{background:B}}>{p.badge}</span>}
                 <h3 className="text-xl font-bold">{p.name}</h3>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mb-3">{p.desc}</p>
@@ -469,8 +449,7 @@ export default function App() {
             ))}
           </div>
           <div className="max-w-md mx-auto mt-16">
-            <p className="text-xs font-semibold uppercase tracking-wider text-center mb-6 text-brand-500">Business</p>
-            <div className="glow-card-accent rounded-2xl p-8 bg-white dark:bg-transparent border-2 border-brand-500/30 dark:border-transparent">
+            <div className="rounded-2xl sm:rounded-3xl p-7 sm:p-8 bg-gray-50 dark:bg-lounge-card border-2 border-brand-500/30 dark:border-brand-500/20 shadow-lg shadow-brand-500/5">
               <span className="inline-block px-2.5 py-1 rounded-full text-white text-[10px] font-medium mb-3" style={{background:B}}>{businessPlan.badge}</span>
               <h3 className="text-2xl font-bold">{businessPlan.name}</h3>
               <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">{businessPlan.desc}</p>
@@ -489,16 +468,22 @@ export default function App() {
         </div>
       </section>
 
+      {/* Section divider */}
+      <div className="h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-white/[0.06] to-transparent"/>
+
       {/* ═══════════════════ FAQ ═══════════════════ */}
-      <section className="py-24 px-6">
+      <section className="py-20 sm:py-28 px-6">
         <div className="max-w-2xl mx-auto">
-          <h2 className="text-2xl font-bold mb-8">Domande frequenti</h2>
+          <div className="text-center mb-10">
+            <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-medium mb-4 border border-gray-200 dark:border-white/[0.06] text-gray-500 dark:text-gray-400">FAQ</span>
+            <h2 className="text-2xl sm:text-3xl font-bold">Domande frequenti</h2>
+          </div>
           <div className="space-y-2">
             {faq.map((f,i)=>(
-              <div key={i} className="glow-card bg-white dark:bg-transparent border border-gray-200 dark:border-transparent rounded-xl overflow-hidden">
+              <div key={i} className="rounded-xl sm:rounded-2xl border border-gray-200 dark:border-white/[0.06] bg-gray-50 dark:bg-lounge-card overflow-hidden">
                 <button onClick={()=>setOpenFaq(openFaq===i?null:i)} className="w-full px-5 py-4 flex items-center justify-between text-left">
                   <span className="text-sm font-medium">{f.q}</span>
-                  <span className="text-gray-400 dark:text-gray-500 ml-3 text-sm">{openFaq===i?'−':'+'}</span>
+                  <span className="text-gray-400 dark:text-gray-500 ml-3 text-sm transition-transform" style={{transform:openFaq===i?'rotate(45deg)':'rotate(0deg)'}}>+</span>
                 </button>
                 {openFaq===i&&<div className="px-5 pb-4 text-sm text-gray-500 dark:text-gray-400 leading-relaxed">{f.a}</div>}
               </div>
@@ -507,23 +492,38 @@ export default function App() {
         </div>
       </section>
 
-      {/* ═══════════════════ CTA ═══════════════════ */}
-      <section className="py-28 px-6 ambient-glow bg-gray-50 dark:bg-transparent">
-        <div className="max-w-xl mx-auto text-center relative z-10">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Prova. È gratis.</h2>
-          <p className="text-gray-500 dark:text-gray-400 mb-8">10 query gratuite, nessuna carta richiesta.</p>
-          <button className="btn-brand-glow h-12 px-7 text-sm font-medium">Inizia gratis <Arrow/></button>
+      {/* Section divider */}
+      <div className="h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-white/[0.06] to-transparent"/>
+
+      {/* ═══════════════════ FINAL CTA ═══════════════════ */}
+      <section className="py-24 sm:py-32 px-6 ambient-glow">
+        <div className="max-w-2xl mx-auto text-center relative z-10">
+          <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-medium mb-4 border border-gray-200 dark:border-white/[0.06] text-gray-500 dark:text-gray-400">Inizia ora</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-5">Pronto a cambiare il modo<br/>in cui esplori i cocktail?</h2>
+          <p className="text-gray-500 dark:text-gray-400 mb-8 leading-relaxed max-w-md mx-auto">10 query gratuite, nessuna carta richiesta. Scopri perché migliaia di appassionati e professionisti scelgono Cocktail AI.</p>
+          <button className="btn-brand-glow h-12 px-8 text-sm font-medium">Prova gratis <Arrow/></button>
         </div>
       </section>
 
       {/* ─── FOOTER ─── */}
-      <footer className="py-8 px-6 border-t border-gray-100 dark:border-white/[0.04]">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
-          <a href="#" className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded-md flex items-center justify-center" style={{background:B}}><Logo size={13} className="text-white"/></div>
-            <span className="font-semibold text-sm">Cocktail AI</span>
-          </a>
-          <p className="text-xs text-gray-400 dark:text-gray-500">© 2026 Cocktail AI</p>
+      <footer className="py-10 px-6 border-t border-gray-100 dark:border-white/[0.04]">
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <a href="#" className="flex items-center gap-2">
+              <div className="w-6 h-6 rounded-md flex items-center justify-center" style={{background:B}}><Logo size={13} className="text-white"/></div>
+              <span className="font-semibold text-sm">Cocktail AI</span>
+            </a>
+            <span className="text-xs text-gray-300 dark:text-gray-600">|</span>
+            <p className="text-xs text-gray-400 dark:text-gray-500">L'esperto di mixology, potenziato dall'AI</p>
+          </div>
+          <div className="flex items-center gap-5">
+            <a href="#features" className="text-xs text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors">Funzionalità</a>
+            <a href="#pricing" className="text-xs text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors">Prezzi</a>
+            <a href="#" className="text-xs text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors">Accedi</a>
+          </div>
+        </div>
+        <div className="max-w-6xl mx-auto mt-6 pt-6 border-t border-gray-100 dark:border-white/[0.04] text-center">
+          <p className="text-xs text-gray-400 dark:text-gray-500">© 2026 Cocktail AI. Tutti i diritti riservati.</p>
         </div>
       </footer>
     </div>
