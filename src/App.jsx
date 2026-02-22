@@ -17,6 +17,41 @@ const Moon = () => <svg width="16" height="16" viewBox="0 0 24 24" fill="none" s
 const Sun = () => <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>;
 const Star = () => <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>;
 
+/* ─── iPhone mockup frame ─── */
+const Phone = ({ children, className = '' }) => (
+  <div className={`relative mx-auto ${className}`}>
+    {/* Frame */}
+    <div className="relative bg-gray-900 dark:bg-[#1a1a1e] rounded-[2.5rem] p-[10px] shadow-2xl border border-gray-700/50 dark:border-white/[0.06]">
+      {/* Dynamic Island */}
+      <div className="absolute top-[18px] left-1/2 -translate-x-1/2 w-[80px] h-[22px] bg-black rounded-full z-20"/>
+      {/* Side buttons */}
+      <div className="absolute -left-[2.5px] top-[72px] w-[3px] h-[24px] bg-gray-700 dark:bg-gray-600 rounded-l"/>
+      <div className="absolute -left-[2.5px] top-[110px] w-[3px] h-[36px] bg-gray-700 dark:bg-gray-600 rounded-l"/>
+      <div className="absolute -left-[2.5px] top-[155px] w-[3px] h-[36px] bg-gray-700 dark:bg-gray-600 rounded-l"/>
+      <div className="absolute -right-[2.5px] top-[130px] w-[3px] h-[52px] bg-gray-700 dark:bg-gray-600 rounded-r"/>
+      {/* Screen */}
+      <div className="relative rounded-[2rem] overflow-hidden bg-white dark:bg-lounge-dark">
+        {/* Status bar */}
+        <div className="flex items-center justify-between px-6 pt-3 pb-1">
+          <span className="text-[9px] font-semibold text-gray-900 dark:text-white">9:41</span>
+          <div className="flex items-center gap-1">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" className="text-gray-900 dark:text-white"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
+            <svg width="14" height="12" viewBox="0 0 24 14" fill="currentColor" className="text-gray-900 dark:text-white"><rect x="0" y="2" width="18" height="10" rx="2" stroke="currentColor" strokeWidth="1.5" fill="none"/><rect x="2" y="4" width="12" height="6" rx="1" fill="currentColor"/><path d="M20 5.5h1.5a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H20V5.5z"/></svg>
+          </div>
+        </div>
+        {/* Content */}
+        <div className="px-0 pb-2">
+          {children}
+        </div>
+        {/* Home indicator */}
+        <div className="flex justify-center pb-2 pt-1">
+          <div className="w-[100px] h-[4px] bg-gray-300 dark:bg-gray-600 rounded-full"/>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
 /* ═══════════════════════════ DATA ═══════════════════════════ */
 
 const sources = ['Death & Co', 'Liquid Intelligence', 'PDT Cocktail Book', 'Cocktail Codex', "Meehan's Manual", 'Diffords Guide', "World's 50 Best Bars"];
@@ -119,66 +154,102 @@ export default function App() {
             </div>
           </div>
 
-          {/* ─── Hero product mockups (Nexio style: floating cards) ─── */}
+          {/* ─── Hero product mockup — iPhone with floating stat cards ─── */}
           <div className="hero-glow relative max-w-4xl mx-auto">
-            <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-4">
-              {/* Chat mockup */}
-              <div className="md:col-span-2 mockup-inner rounded-2xl overflow-hidden shadow-2xl">
-                <div className="flex items-center gap-1.5 px-4 py-2.5 border-b border-gray-100 dark:border-white/[0.04]">
-                  <div className="w-2 h-2 rounded-full bg-red-400/70"/><div className="w-2 h-2 rounded-full bg-yellow-400/70"/><div className="w-2 h-2 rounded-full bg-green-400/70"/>
-                  <span className="text-[10px] text-gray-400 dark:text-gray-500 ml-auto">Cocktail AI</span>
-                </div>
-                <div className="p-4 space-y-3">
-                  <div className="rounded-xl rounded-br-sm px-3 py-2 bg-brand-500/[0.06] border border-brand-200/30 dark:bg-brand-500/8 dark:border-brand-500/10 max-w-[80%] ml-auto">
-                    <p className="text-xs text-brand-900 dark:text-brand-200">5 twist di classici con prodotti della Costiera Amalfitana, no spritz</p>
+            <div className="relative z-10 flex flex-col items-center">
+              {/* Phone + floating cards wrapper */}
+              <div className="relative">
+                {/* Floating stat cards — left */}
+                <div className="hidden lg:block absolute -left-52 top-8 space-y-3 w-44">
+                  <div className="mockup-inner rounded-2xl p-4 shadow-lg">
+                    <p className="text-2xl font-bold text-brand-500">15.000+</p>
+                    <p className="text-xs font-medium mt-0.5">Ricette verificate</p>
+                    <p className="text-[10px] text-gray-400 dark:text-gray-500">Classici, moderni, signature</p>
+                    <div className="flex items-center gap-1 mt-2">
+                      <span className="h-1.5 rounded-full bg-brand-500 flex-[3]"/>
+                      <span className="h-1.5 rounded-full bg-brand-300 dark:bg-brand-700 flex-[2]"/>
+                      <span className="h-1.5 rounded-full bg-brand-200 dark:bg-brand-800 flex-1"/>
+                    </div>
                   </div>
-                  <div className="space-y-2 max-w-[90%]">
-                    <p className="text-xs font-bold">1. Costa Dorata</p>
-                    <p className="text-[10px] text-gray-400 dark:text-gray-500 uppercase tracking-wider">Twist on: Gin Fizz</p>
-                    <div className="space-y-0.5">
-                      {['50ml Gin mediterraneo','20ml Limoncello di Sfusato','15ml Sciroppo di basilico','3 gocce colatura di alici'].map((r,i)=>
-                        <p key={i} className="text-[11px] text-gray-600 dark:text-gray-400"><span className="text-brand-500">·</span> {r}</p>
+                  <div className="mockup-inner rounded-2xl p-4 shadow-lg">
+                    <p className="text-2xl font-bold text-brand-500">700+</p>
+                    <p className="text-xs font-medium mt-0.5">Bar nel mondo</p>
+                    <p className="text-[10px] text-gray-400 dark:text-gray-500">World's 50 Best e oltre</p>
+                    <div className="flex items-center gap-0.5 mt-2 text-brand-500">
+                      <Star/><Star/><Star/><Star/><Star/>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Floating stat card — right */}
+                <div className="hidden lg:block absolute -right-48 top-16 w-44">
+                  <div className="mockup-inner rounded-2xl p-4 shadow-lg">
+                    <p className="text-lg font-bold">9 Lingue</p>
+                    <p className="text-[10px] text-gray-400 dark:text-gray-500 mt-0.5">Voice chat multilingua</p>
+                    <div className="flex items-center gap-1 mt-2 flex-wrap">
+                      {['IT','EN','ES','FR','DE','PT','JA','KO','ZH'].map((l,i)=>
+                        <span key={i} className="w-5 h-5 rounded text-[7px] font-bold flex items-center justify-center bg-gray-100 dark:bg-white/5 text-gray-500 dark:text-gray-400">{l}</span>
                       )}
                     </div>
-                    <p className="text-[10px] text-gray-400 dark:text-gray-500 italic pt-1 border-t border-gray-100 dark:border-white/[0.04]">La colatura di alici dona umami che bilancia il limoncello.</p>
+                  </div>
+                  <div className="mockup-inner rounded-2xl p-4 shadow-lg mt-3">
+                    <p className="text-lg font-bold">3.000+</p>
+                    <p className="text-[10px] text-gray-400 dark:text-gray-500 mt-0.5">Spirits nel database</p>
+                    <div className="flex items-center gap-1 mt-2">
+                      {['🥃','🍸','🥂','🍹'].map((e,i)=><span key={i} className="text-sm">{e}</span>)}
+                    </div>
                   </div>
                 </div>
-                <div className="px-4 py-2 border-t border-gray-100 dark:border-white/[0.04]">
-                  <div className="flex items-center rounded-lg border border-gray-200 dark:border-white/[0.06] px-3 py-1.5">
-                    <span className="text-[11px] text-gray-300 dark:text-gray-600 flex-1">Chiedi qualsiasi cosa...</span>
-                    <button className="h-6 px-2 rounded-md text-white text-[10px] font-medium flex items-center gap-1" style={{background:B}}>Crea <Send/></button>
+
+                {/* Center: iPhone mockup */}
+                <Phone className="w-[280px]">
+                  <div className="px-3 py-2 space-y-3">
+                    {/* App header */}
+                    <div className="flex items-center gap-2 px-1 pb-1 border-b border-gray-100 dark:border-white/[0.04]">
+                      <div className="w-5 h-5 rounded-md flex items-center justify-center" style={{background:B}}><Logo size={10} className="text-white"/></div>
+                      <span className="text-[10px] font-semibold">Cocktail AI</span>
+                    </div>
+                    {/* User message */}
+                    <div className="rounded-xl rounded-br-sm px-3 py-2 bg-brand-500/[0.06] border border-brand-200/30 dark:bg-brand-500/8 dark:border-brand-500/10 max-w-[90%] ml-auto">
+                      <p className="text-[10px] text-brand-900 dark:text-brand-200">5 twist con prodotti della Costiera Amalfitana</p>
+                    </div>
+                    {/* AI response */}
+                    <div className="space-y-1.5">
+                      <p className="text-[10px] font-bold">1. Costa Dorata</p>
+                      <p className="text-[8px] text-gray-400 dark:text-gray-500 uppercase tracking-wider">Twist on: Gin Fizz</p>
+                      <div className="space-y-0.5">
+                        {['50ml Gin mediterraneo','20ml Limoncello di Sfusato','15ml Sciroppo di basilico','3 gocce colatura di alici'].map((r,i)=>
+                          <p key={i} className="text-[9px] text-gray-600 dark:text-gray-400"><span className="text-brand-500">·</span> {r}</p>
+                        )}
+                      </div>
+                      <p className="text-[8px] text-gray-400 dark:text-gray-500 italic pt-1 border-t border-gray-100 dark:border-white/[0.04]">La colatura di alici dona umami che bilancia il limoncello.</p>
+                    </div>
+                    {/* Input bar */}
+                    <div className="flex items-center rounded-lg border border-gray-200 dark:border-white/[0.06] px-2.5 py-1.5">
+                      <span className="text-[9px] text-gray-300 dark:text-gray-600 flex-1">Chiedi qualsiasi cosa...</span>
+                      <button className="h-5 px-2 rounded-md text-white text-[8px] font-medium flex items-center gap-1" style={{background:B}}>Crea <Send/></button>
+                    </div>
                   </div>
-                </div>
+                </Phone>
               </div>
 
-              {/* Side stats cards */}
-              <div className="space-y-4">
-                <div className="mockup-inner rounded-2xl p-5 shadow-lg">
-                  <p className="text-3xl font-bold text-brand-500">15.000+</p>
-                  <p className="text-sm font-medium mt-1">Ricette verificate</p>
-                  <p className="text-xs text-gray-400 dark:text-gray-500 mt-0.5">Classici, moderni, signature</p>
-                  <div className="flex items-center gap-1.5 mt-3">
-                    <span className="h-1.5 rounded-full bg-brand-500 flex-[3]"/>
-                    <span className="h-1.5 rounded-full bg-brand-300 dark:bg-brand-700 flex-[2]"/>
-                    <span className="h-1.5 rounded-full bg-brand-200 dark:bg-brand-800 flex-1"/>
-                  </div>
+              {/* Mobile-only stat cards (below phone) */}
+              <div className="lg:hidden grid grid-cols-2 sm:grid-cols-4 gap-3 mt-8 w-full max-w-lg">
+                <div className="mockup-inner rounded-xl p-3 shadow-md text-center">
+                  <p className="text-xl font-bold text-brand-500">15k+</p>
+                  <p className="text-[10px] text-gray-400 dark:text-gray-500">Ricette</p>
                 </div>
-                <div className="mockup-inner rounded-2xl p-5 shadow-lg">
-                  <p className="text-3xl font-bold text-brand-500">700+</p>
-                  <p className="text-sm font-medium mt-1">Bar nel mondo</p>
-                  <p className="text-xs text-gray-400 dark:text-gray-500 mt-0.5">World's 50 Best e oltre</p>
-                  <div className="flex items-center gap-0.5 mt-3 text-brand-500">
-                    <Star/><Star/><Star/><Star/><Star/>
-                  </div>
+                <div className="mockup-inner rounded-xl p-3 shadow-md text-center">
+                  <p className="text-xl font-bold text-brand-500">700+</p>
+                  <p className="text-[10px] text-gray-400 dark:text-gray-500">Bar</p>
                 </div>
-                <div className="mockup-inner rounded-2xl p-5 shadow-lg">
-                  <p className="text-xl font-bold">9 Lingue</p>
-                  <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">Voice chat multilingua</p>
-                  <div className="flex items-center gap-1 mt-3">
-                    {['IT','EN','ES','FR','DE','PT','JA','KO','ZH'].map((l,i)=>
-                      <span key={i} className="w-6 h-6 rounded-md text-[8px] font-bold flex items-center justify-center bg-gray-100 dark:bg-white/5 text-gray-500 dark:text-gray-400">{l}</span>
-                    )}
-                  </div>
+                <div className="mockup-inner rounded-xl p-3 shadow-md text-center">
+                  <p className="text-xl font-bold text-brand-500">3k+</p>
+                  <p className="text-[10px] text-gray-400 dark:text-gray-500">Spirits</p>
+                </div>
+                <div className="mockup-inner rounded-xl p-3 shadow-md text-center">
+                  <p className="text-xl font-bold">9</p>
+                  <p className="text-[10px] text-gray-400 dark:text-gray-500">Lingue</p>
                 </div>
               </div>
             </div>
@@ -212,38 +283,46 @@ export default function App() {
               </ul>
               <button className="btn-brand-glow h-10 px-5 text-sm font-medium">Prova gratis <Arrow/></button>
             </div>
-            {/* Mockup */}
-            <div className="mockup-glow relative">
-              <div className="relative z-10 mockup-inner rounded-2xl overflow-hidden shadow-xl">
-                <div className="flex items-center gap-1.5 px-4 py-2.5 border-b border-gray-100 dark:border-white/[0.04]">
-                  <div className="w-2 h-2 rounded-full bg-red-400/70"/><div className="w-2 h-2 rounded-full bg-yellow-400/70"/><div className="w-2 h-2 rounded-full bg-green-400/70"/>
-                  <span className="text-[10px] text-gray-400 dark:text-gray-500 ml-auto">Cocktail AI</span>
-                </div>
-                <div className="p-4 space-y-3">
-                  <div className="rounded-xl rounded-br-sm px-3 py-2 bg-brand-500/[0.06] border border-brand-200/30 dark:bg-brand-500/8 dark:border-brand-500/10 ml-auto max-w-[85%]">
-                    <p className="text-xs text-brand-900 dark:text-brand-200">Il mio Negroni è troppo amaro. Cosa sbaglio?</p>
+            {/* Mockup — iPhone */}
+            <div className="mockup-glow relative flex items-center justify-center">
+              <Phone className="w-[260px] relative z-10">
+                <div className="px-3 py-2 space-y-3">
+                  {/* App header inside phone */}
+                  <div className="flex items-center gap-2 px-1 pb-1 border-b border-gray-100 dark:border-white/[0.04]">
+                    <div className="w-5 h-5 rounded-md flex items-center justify-center" style={{background:B}}><Logo size={10} className="text-white"/></div>
+                    <span className="text-[10px] font-semibold">Cocktail AI</span>
                   </div>
-                  <div className="space-y-2">
-                    <p className="text-xs text-gray-700 dark:text-gray-300">Il Negroni amaro dipende da <strong>tre cose</strong>:</p>
+                  {/* User message */}
+                  <div className="rounded-xl rounded-br-sm px-3 py-2 bg-brand-500/[0.06] border border-brand-200/30 dark:bg-brand-500/8 dark:border-brand-500/10 ml-auto max-w-[90%]">
+                    <p className="text-[10px] text-brand-900 dark:text-brand-200">Il mio Negroni è troppo amaro. Cosa sbaglio?</p>
+                  </div>
+                  {/* AI response */}
+                  <div className="space-y-1.5">
+                    <p className="text-[10px] text-gray-700 dark:text-gray-300">Il Negroni amaro dipende da <strong>tre cose</strong>:</p>
                     {[
-                      {n:'1',t:'Vermouth sbagliato',d:'Usa dolce rosso: Carpano Antica o Cocchi.'},
-                      {n:'2',t:'Gin troppo secco',d:'Prova Hendrick\'s o Roku, meno aggressivi.'},
+                      {n:'1',t:'Vermouth sbagliato',d:'Usa Carpano Antica o Cocchi.'},
+                      {n:'2',t:'Gin troppo secco',d:'Prova Roku, meno aggressivo.'},
                       {n:'3',t:'Proporzioni',d:'1:0.75:1.25 gin-campari-vermouth.'},
                     ].map((p,i)=>(
-                      <div key={i} className="flex gap-2 items-start bg-gray-50 dark:bg-white/[0.02] rounded-lg p-2.5 border border-transparent dark:border-white/[0.03]">
-                        <span className="w-5 h-5 rounded-md flex items-center justify-center text-white text-[9px] font-bold shrink-0" style={{background:B}}>{p.n}</span>
+                      <div key={i} className="flex gap-1.5 items-start bg-gray-50 dark:bg-white/[0.02] rounded-lg p-2 border border-transparent dark:border-white/[0.03]">
+                        <span className="w-4 h-4 rounded flex items-center justify-center text-white text-[8px] font-bold shrink-0" style={{background:B}}>{p.n}</span>
                         <div>
-                          <p className="text-[11px] font-semibold">{p.t}</p>
-                          <p className="text-[10px] text-gray-500 dark:text-gray-400">{p.d}</p>
+                          <p className="text-[9px] font-semibold">{p.t}</p>
+                          <p className="text-[8px] text-gray-500 dark:text-gray-400">{p.d}</p>
                         </div>
                       </div>
                     ))}
-                    <div className="rounded-lg p-2 text-[10px] text-gray-600 dark:text-gray-300 bg-brand-50 border border-brand-200/30 dark:bg-brand-500/5 dark:border-brand-500/10">
+                    <div className="rounded-lg p-1.5 text-[8px] text-gray-600 dark:text-gray-300 bg-brand-50 border border-brand-200/30 dark:bg-brand-500/5 dark:border-brand-500/10">
                       <strong>Pro tip:</strong> stira 30s, non shakeare.
                     </div>
                   </div>
+                  {/* Input bar */}
+                  <div className="flex items-center rounded-lg border border-gray-200 dark:border-white/[0.06] px-2.5 py-1.5">
+                    <span className="text-[9px] text-gray-300 dark:text-gray-600 flex-1">Chiedi qualsiasi cosa...</span>
+                    <button className="h-5 px-2 rounded-md text-white text-[8px] font-medium flex items-center gap-1" style={{background:B}}><Send/></button>
+                  </div>
                 </div>
-              </div>
+              </Phone>
             </div>
           </div>
         </div>
@@ -323,30 +402,38 @@ export default function App() {
               </ul>
               <button className="btn-outline-brand h-10 px-5 text-sm font-medium">Scopri i bar <Arrow/></button>
             </div>
-            {/* Mockup */}
-            <div className="mockup-glow relative">
-              <div className="relative z-10 space-y-3">
-                {[
-                  {name:'Connaught Bar',city:'London',rank:'#1',stars:5},
-                  {name:'Paradiso',city:'Barcelona',rank:'#2',stars:5},
-                  {name:'Tayēr + Elementary',city:'London',rank:'#3',stars:5},
-                  {name:'Licorería Limantour',city:'Mexico City',rank:'#7',stars:4},
-                  {name:'Handshake Speakeasy',city:'Mexico City',rank:'#8',stars:4},
-                ].map((b,i)=>(
-                  <div key={i} className="mockup-inner rounded-xl px-4 py-3 shadow-md flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <span className="w-8 h-8 rounded-lg flex items-center justify-center text-[10px] font-bold bg-brand-500/10 text-brand-500">{b.rank}</span>
-                      <div>
-                        <p className="text-sm font-semibold">{b.name}</p>
-                        <p className="text-[11px] text-gray-400 dark:text-gray-500">{b.city}</p>
+            {/* Mockup — iPhone */}
+            <div className="mockup-glow relative flex items-center justify-center">
+              <Phone className="w-[260px] relative z-10">
+                <div className="px-3 py-2 space-y-2">
+                  {/* App header inside phone */}
+                  <div className="flex items-center gap-2 px-1 pb-1.5 border-b border-gray-100 dark:border-white/[0.04]">
+                    <div className="w-5 h-5 rounded-md flex items-center justify-center" style={{background:B}}><Logo size={10} className="text-white"/></div>
+                    <span className="text-[10px] font-semibold">Bar Guide</span>
+                  </div>
+                  <p className="text-[9px] font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500 px-1">World's 50 Best Bars</p>
+                  {[
+                    {name:'Connaught Bar',city:'London',rank:'#1',stars:5},
+                    {name:'Paradiso',city:'Barcelona',rank:'#2',stars:5},
+                    {name:'Tayēr + Elementary',city:'London',rank:'#3',stars:5},
+                    {name:'Licorería Limantour',city:'Mexico City',rank:'#7',stars:4},
+                    {name:'Handshake Speakeasy',city:'Mexico City',rank:'#8',stars:4},
+                  ].map((b,i)=>(
+                    <div key={i} className="flex items-center justify-between py-1.5 px-1 border-b border-gray-100 dark:border-white/[0.03] last:border-0">
+                      <div className="flex items-center gap-2">
+                        <span className="w-6 h-6 rounded-md flex items-center justify-center text-[8px] font-bold bg-brand-500/10 text-brand-500">{b.rank}</span>
+                        <div>
+                          <p className="text-[10px] font-semibold">{b.name}</p>
+                          <p className="text-[8px] text-gray-400 dark:text-gray-500">{b.city}</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-0.5 text-brand-500">
+                        {[...Array(b.stars)].map((_,j)=><Star key={j}/>)}
                       </div>
                     </div>
-                    <div className="flex items-center gap-0.5 text-brand-500">
-                      {[...Array(b.stars)].map((_,j)=><Star key={j}/>)}
-                    </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              </Phone>
             </div>
           </div>
         </div>
